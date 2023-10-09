@@ -1,0 +1,13 @@
+table{
+    background-color: rgb(26, 166, 166);
+}
+
+th{
+    background-color: aqua;
+    border-radius: 5px;
+    border-color: rgb(255, 0, 200);
+}
+
+td{
+    background-color: pink;
+}
