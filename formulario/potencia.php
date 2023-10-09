@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario Potencia</title>
-    <?php require '../Funciones/potencia.php'; ?>
+    <?php require '../funciones/potencia.php'; ?>
 </head>
 <body>
 
