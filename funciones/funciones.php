@@ -45,10 +45,10 @@ function calificacion(int|float $nota) :string { //:string es lo que me va a dev
       };
       return $calificacion;
     }
-
+/*
     echo "<h3>La nota 5.5 es un: " . calificacion(5.5) . "</h3>";
     echo "<br><br>";
-
+*/
 
 function primos (int $limite) : array{
     $primos = [];
@@ -65,14 +65,14 @@ function primos (int $limite) : array{
 
     return $primos;
 }
-
+/*
     $primos = primos(75);
     foreach($primos as $primo) {
         echo "$primo ";
     }
 
     echo "<br><br>";
-
+*/
 function primoNum (int $numerito) :bool{
     if ($numerito < 2)
     return false;
@@ -87,15 +87,15 @@ function primoNum (int $numerito) :bool{
 }
 
     //echo primoNum(97) ? "si" : "no";
-    $esPrimo = primoNum(12);
+  /*  $esPrimo = primoNum(12);
 
     if($esPrimo) {
-        echo "<h3>El numero es primo</h3>";
+      echo "<h3>El numero es primo</h3>";
     } else {
         echo "<h3>El numero no es primo</h3>";
     }
-
-    echo "<br><br>";
+*/
+  //  echo "<br><br>";
 
 
     //Convertidor de fahrenheit a celsius
@@ -105,7 +105,7 @@ function convertidor1(int $num) {
     
 }
     $formu1 = convertidor1(25);
-    echo "<h3>La conversion es: " . $formu1 . "</h3>";
+   // echo "<h3>La conversion es: " . $formu1 . "</h3>";
 
   
     //Convertidor de celsius a fahrenheit 
@@ -114,7 +114,7 @@ function convertidor2(int $num){
     return $formula;
 }
     $formu2 = convertidor2(25);
-    echo "<h3>La conversion es: " . $formu2 . "</h3>";
+  //  echo "<h3>La conversion es: " . $formu2 . "</h3>";
     
 
     //Convertidor de fahrenheit a Kelvin
@@ -123,7 +123,7 @@ function convertidor3(int $num){
     return $formula;
 }
     $formu3 = convertidor3(25);
-    echo "<h3>La conversion es: " . $formu3 . "</h3>";
+  //  echo "<h3>La conversion es: " . $formu3 . "</h3>";
 
 
      //Convertidor de celsius a Kelvin
@@ -131,8 +131,9 @@ function convertidor3(int $num){
         $formula = $num + 273.15;
         return $formula;
     }
+
         $formu4 = convertidor4(25);
-        echo "<h3>La conversion es: " . $formu4 . "</h3>";
+     //   echo "<h3>La conversion es: " . $formu4 . "</h3>";
 
 
            //Convertidor de Kelvin a celsius
@@ -141,7 +142,7 @@ function convertidor3(int $num){
         return $formula;
     }
         $formu5 = convertidor5(25);
-        echo "<h3>La conversion es: " . $formu5 . "</h3>";
+      //  echo "<h3>La conversion es: " . $formu5 . "</h3>";
 
 
            //Convertidor de Kelvin a fahrenheit
@@ -150,10 +151,10 @@ function convertidor3(int $num){
         return $formula;
     }
         $formu6 = convertidor6(25);
-        echo "<h3>La conversion es: " . $formu6 . "</h3>";
+     //   echo "<h3>La conversion es: " . $formu6 . "</h3>";
 
 
-        echo "<br><br>";
+    //    echo "<br><br>";
 
     function convertidorT(int|float $temp, string $t1, string $t2) :float {
         
@@ -173,24 +174,24 @@ function convertidor3(int $num){
     }
 
         $conver = convertidorT(25, "C", "F");
-        echo "<h3>La conversion es: " . $conver . "</h3>";
+     //   echo "<h3>La conversion es: " . $conver . "</h3>";
 
         $conver = convertidorT(27, "F","C");
-        echo "<h3>La conversion es: " . $conver . "</h3>";
+    //    echo "<h3>La conversion es: " . $conver . "</h3>";
 
         $conver = convertidorT(28, "C","K");
-        echo "<h3>La conversion es: " . $conver . "</h3>";
+      //  echo "<h3>La conversion es: " . $conver . "</h3>";
 
         $conver = convertidorT(30, "F","K");
-        echo "<h3>La conversion es: " . $conver . "</h3>";
+      //  echo "<h3>La conversion es: " . $conver . "</h3>";
 
         $conver = convertidorT(4, "K","C");
-        echo "<h3>La conversion es: " . $conver . "</h3>";
+      //  echo "<h3>La conversion es: " . $conver . "</h3>";
 
         $conver = convertidorT(6, "K","F");
-        echo "<h3>La conversion es: " . $conver . "</h3>";
+      //  echo "<h3>La conversion es: " . $conver . "</h3>";
        
-        echo "<br><br>";
+     //   echo "<br><br>";
 
 
     function potencia(int $num1, int $num2) : int{
@@ -204,7 +205,7 @@ function convertidor3(int $num){
     }
 
     $resultado = potencia(3,4);
-    echo "<h3>La potencia es : " . $resultado . "</h3>";
+ //   echo "<h3>La potencia es : " . $resultado . "</h3>";
 
         
 ?>

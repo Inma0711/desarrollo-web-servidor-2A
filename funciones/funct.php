@@ -23,6 +23,18 @@ function max3 (int $num1, int $num2, int $num3) : string {
     DEFINE("SIN IVA", 0);
 
 
+    
+    function precioConIva(float|int $precio, string $iva) : float {
+        $iva = strtoupper($iva);        //strtoupper es para asegurarse que la ceda este en mayusculas, para evitar problemas de mayusculas y minusculas
+        $precioConIva = match ($iva) {
+            "SUPERREDUCIDO" => $precio + $precio * (SUPERREDUCIDO/100),
+            "REDUCIDO" => $precio + $precio * (REDUCIDO/100),
+            "GENERAL" => $precio + $precio * (GENERAL/100),
+            "SIN IVA" => $precio
+        };
+        return $precioConIva;
+    }
+
     function precioSinIva(float|int $precio, string $iva) : float {
         $iva = strtoupper($iva);
         $precioSinIva = match ($iva) {
@@ -35,16 +47,6 @@ function max3 (int $num1, int $num2, int $num3) : string {
     }
 
 
-    function precioConIva(float|int $precio, string $iva) : float {
-        $iva = strtoupper($iva);
-        $precioConIva = match ($iva) {
-            "SUPERREDUCIDO" => $precio + $precio * (SUPERREDUCIDO/100),
-            "REDUCIDO" => $precio + $precio * (REDUCIDO/100),
-            "GENERAL" => $precio + $precio * (GENERAL/100),
-            "SIN IVA" => $precio
-        };
-        return $precioConIva;
-    }
 
     function salarioSinIRPF(int $dinero){
         return $dinero;

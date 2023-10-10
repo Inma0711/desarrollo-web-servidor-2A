@@ -43,7 +43,8 @@ simplificada.*/
 
       
         for($i = 0; $i < count($array1); $i++){
-            echo "<tr><td>$array1[$i]</td><td>$array2[$i]</td></tr>";
+            echo "<tr><td>$array1[$i]</td>
+            <td>$array2[$i]</td></tr>";
         }
         echo "</table>";
 

@@ -20,6 +20,7 @@
             <br><br>
             <label for="iva">IVA</label>
             <br>
+        
             <select id="iva" name="iva">
                 <option value="SIN IVA">
                     Sin IVA
@@ -34,8 +35,9 @@
                     General
                 </option>
             </select>
+
             <br><br>
-            <input type="hidden" name="action" value="iva">
+            <input type="hidden" name="action" value="iva"> 
             <input type="submit" value="Calcular">
             <?php
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
