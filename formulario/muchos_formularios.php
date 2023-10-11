@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Muchos formularios</title>
-    <?php require '../Funciones/muchas_funciones.php'; ?>
+    <?php require '../funciones/muchas_funciones.php'; ?>
 
 </head>
 <body>
@@ -45,19 +45,19 @@
     </fieldset>
 </form>
     
-<h1>FORMULARIO MÁXIMO DE 3 NÚMEROS</h1>
+<h1>FORMULARIO Mï¿½XIMO DE 3 Nï¿½MEROS</h1>
 
 <form action="" method="post">
     <fieldset>
-        <label for="n1">Número 1</label>
+        <label for="n1">Nï¿½mero 1</label>
         <br>
         <input type="number" id="n1" name="n1">
         <br><br>
-        <label for="n2">Número 2</label>
+        <label for="n2">Nï¿½mero 2</label>
         <br>
         <input type="number" id="n2" name="n2">
         <br><br>
-        <label for="n3">Número 3</label>
+        <label for="n3">Nï¿½mero 3</label>
         <br>
         <input type="number" id="n3" name="n3">
         <br>
@@ -109,7 +109,7 @@
 <h1>FORMULARIO PRIMOS</h1>
 <form action="" method="post">
     <fieldset>
-        <label for="nPrimos">Número de primos: </label>
+        <label for="nPrimos">Nï¿½mero de primos: </label>
         <br>
         <input type="number" id="nPrimos" name="nPrimos">
         <br>
@@ -121,7 +121,7 @@
         if($_SERVER["REQUEST_METHOD"] == "POST") {
             if($_POST["action"] == "primos") {
                 $numeroPrimos = (int) $_POST["nPrimos"];
-                echo "Los " . $numeroPrimos . " primeros números primos son: ";
+                echo "Los " . $numeroPrimos . " primeros nï¿½meros primos son: ";
                 print_r(primos($numeroPrimos));
             }
         }
