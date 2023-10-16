@@ -63,4 +63,10 @@ function esPrimo(int $numero) : bool {
     return $primo;
 }
 
+function depurar($entrada) {
+    $salida = htmlspecialchars($entrada);
+    $salida = trim($salida);
+    return $salida;
+}
+
 ?>
