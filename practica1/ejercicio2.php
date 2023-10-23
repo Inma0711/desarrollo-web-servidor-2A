@@ -74,15 +74,29 @@ foreach($temperaturas as $temp) {
 }
 
 
-
+/* // Esto esta mal
 for ($i = 0; $i < count($temperaturas); $i++) {
     $mediaMin = ($temperaturas[$i][1]+$temperaturas[$i][1])/count($temperaturas);
 }
+*/
 
+$mediaMin = 0;
+for ($i = 0; $i < count($temperaturas); $i++) {
+    $mediaMin += $temperaturas[$i][1];
+}
+$mediaMin /= count($temperaturas);
+
+
+$mediaMax = 0;
+for($i = 0; $i < count($temperaturas); $i++) {
+    $mediaMax += $temperaturas [$i][2];
+}
+$mediaMax /= count($temperaturas);
+/*
 for ($i = 0; $i < count($temperaturas); $i++) {
     $mediaMax = ($temperaturas[$i][2]+$temperaturas[$i][2])/count($temperaturas);
 }
-
+*/
 echo "</table>
     <h3>Temperatura minima media: $mediaMin </h3>
     <h3>Temperatura maxima media: $mediaMax </h3>";

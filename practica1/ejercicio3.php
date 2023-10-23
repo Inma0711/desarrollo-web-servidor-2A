@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="estilo.css">
     <title>Ejercicio 3</title>
 </head>
+
 <body>
 
     <?php
@@ -17,16 +19,13 @@ cuadrado perfecto.
 Mediante bucles y las estructuras de control que consideres adecuadas, crea un
 array que contenga los 50 primeros cuadrados perfectos comenzando desde el 1.
 Muestra la información en una tabla HTML5 con CSS que contenga una columna
-para indicar el cuadrado perfecto y otra para indicar su raíz cuadrada.*/ 
+para indicar el cuadrado perfecto y otra para indicar su raíz cuadrada.*/
 
-$array1 = array();
+    $array1 = array();
 
-
-
-for($i = 1; $i <= 50; $i++){
-  
-    array_push($array1, pow($i,2));
-}
+    for ($i = 1; $i <= 50; $i++) {
+        array_push($array1, pow($i, 2));
+    }
 
     echo "<table border='1'>
     <tr>
@@ -35,12 +34,13 @@ for($i = 1; $i <= 50; $i++){
     </tr>";
 
 
-    for($i = 0; $i < 50; $i++){
-        echo "<tr><td>$array1[$i]</td><td>".sqrt($array1[$i]) ."</td></tr>";
+    for ($i = 0; $i < 50; $i++) {
+        echo "<tr><td>$array1[$i]</td><td>" . sqrt($array1[$i]) . "</td></tr>";
     }
     ?>
 
 
-    
+
 </body>
+
 </html>
