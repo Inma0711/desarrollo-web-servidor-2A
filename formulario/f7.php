@@ -12,11 +12,12 @@
     <?php
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $temp_usuario = depurar($_POST["usuario"]);
-        $temp_edad = depurar($_POST["edad"]);
         $temp_nombre = depurar($_POST["nombre"]);
         $temp_apellidos = depurar($_POST["apellidos"]);
+        $temp_edad = depurar($_POST["fecha_nacimiento"]);
         #Si los apellidos tienen espacios en blanco de mas por el medio
         #Los eliminamos con preg_replace
+
 
         $temp_apellidos = preg_replace("/[ ]{2,}/", ' ', $temp_apellidos);
         $temp_fecha_nacimiento = depurar($_POST["fecha_nacimiento"]);
@@ -30,7 +31,7 @@
                     y contener solamente letras o números";
             } else {
                 $usuario = $temp_usuario;
-                echo $usuario;
+               // echo $usuario;
             }
         }
 
@@ -44,8 +45,8 @@
                 $err_nombre = "El nombre no puede tener más de 30 caracteres
                     o menos de 2";
             } else {
-                $patron = "/^[a-zA-Z][a-zA-Z ]*[a-zA-Z]$/";
-                if(!preg_match($patron, $temp_nombre)) {
+                $patron = "/^[a-zA-Z][a-zA-Z ]*[a-zA-Z]$/"; // Expresion regular
+                if(!preg_match($patron, $temp_nombre)) { //Funcion que devuelve buleano segun si tu string cumple con el patron o no
                     $err_nombre = "El nombre solo puede contener letras o 
                         espacios en blanco";
                 } else {
@@ -81,13 +82,32 @@
         }
     
 
-        # VALIDAR LA EDAD
+      
 
-        if(strlen($temp_fecha_nacimiento) == 0) {
+          #   Validación fecha de nacimiento
+          if(strlen($temp_fecha_nacimiento) == 0) {
             $err_fecha_nacimiento = "La fecha de nacimiento es obligatoria";
-        }else{
+        } else {
             $fecha_actual = date("Y-m-d");
             list($anyo_actual, $mes_actual, $dia_actual) = explode('-', $fecha_actual);
+            list($anyo, $mes, $dia) = explode('-', $temp_fecha_nacimiento);
+            if($anyo_actual - $anyo > 18) {
+                $fecha_nacimiento = $temp_fecha_nacimiento;
+            } else if($anyo_actual - $anyo < 18) {
+                $err_fecha_nacimiento = "No puedes ser menor de edad";
+            } else {
+                if($mes_actual - $mes > 0) {
+                    $fecha_nacimiento = $temp_fecha_nacimiento;
+                } else if($mes_actual - $mes < 0) {
+                    $err_fecha_nacimiento = "No puedes ser menor de edad";
+                } else {
+                    if($dia_actual - $dia >= 0) {
+                        $fecha_nacimiento = $temp_fecha_nacimiento;
+                    }else{
+                        $err_fecha_nacimiento = "No puedes ser menor de edad";
+                    }
+                }
+            }
         }
     }
     ?>
@@ -114,10 +134,16 @@
     </form>
 
     <?php
-    if(isset($nombre) && isset($apellidos)) {
+    if(isset($usuario) && isset($nombre) && isset($apellidos) && isset($fecha_nacimiento)) {
+        echo "<h3>Usuario: $usuario</h3>";
         echo "<h3>Nombre: $nombre</h3>";
         echo "<h3>Apellidos: $apellidos</h3>";
-        var_dump($apellidos);
+        echo "<h3>Fecha de nacimiento: $fecha_nacimiento</h3>";
+
+        $sql = "INSERT INTO usuarios (usuario, nombre, apellidos, fecha_nacimiento)
+                VALUES ('$usuario', '$nombre', '$apellidos', '$fecha_nacimiento')";
+
+                $conexion -> query($eql);
     }
     ?>
 
