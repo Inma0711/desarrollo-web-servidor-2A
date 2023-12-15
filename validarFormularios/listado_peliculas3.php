@@ -13,6 +13,18 @@
     if($_SERVER["REQUEST_METHOD"] == "POST"){
         $id_pelicula = $_POST["id_pelicula"];
         echo "<p>La pelicula seleccionada es $id_pelicula</p>";
+
+        // para insertar en productos_cestas: id_producto, id_cesta, cantidad
+        /*
+            id_producto: lo tenemos
+            cantidad:la tenemos (1)
+            ¿id_cesta?
+            habra que coger con la sesion el usuario actual
+            y hcaer una consulta a la tabla cestas para sacar el id de la cesta
+            
+            luego podremos insertar en productos_cestas
+            
+        */ 
     }
     ?>
 
@@ -55,6 +67,7 @@
             <td><?php echo  $pelicula -> fecha_estreno  ?></td>
             <td><?php echo $pelicula -> edad_recomendada  ?></td>
             <td>
+
                 <form action="" method="post">
                     <input type="hidden">
                 <input class="btn btn-warning" type="submit" value="Añadir">
