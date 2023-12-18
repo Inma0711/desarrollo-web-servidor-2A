@@ -12,7 +12,7 @@
     if($_SERVER["REQUEST_METHOD"] == "POST") {
         $titulo = $_POST["titulo"];
         $distribuidora = $_POST["distribuidora"];
-        $precio = (double)$_POST["precio"];
+        $precio = $_POST["precio"];
 
         $sql = $conexion -> prepare("INSERT INTO videojuegos VALUES (?,?,?)");
         $sql -> bind_param("ssd", $titulo, $distribuidora, $precio);
