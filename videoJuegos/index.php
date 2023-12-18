@@ -125,6 +125,12 @@
                         <td><?php echo $fila["titulo"] ?></td>
                         <td><?php echo $fila["distribuidora"] ?></td>
                         <td><?php echo $fila["precio"] ?></td>
+                        <td>
+                            <form action="view_videogame.php" method="get">
+                                <input type="hidden" name="titulo" value="<?php echo $fila["titulo"]?>">
+                                <input class="btn btn-secondary" type="submit" value="Ver">
+                            </form>
+                        </td>
                     </tr>
                 <?php }
                 ?>
