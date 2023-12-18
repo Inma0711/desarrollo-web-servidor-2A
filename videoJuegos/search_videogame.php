@@ -10,9 +10,15 @@
 <body>
     <?php 
     if($_SERVER["REQUEST_METHOD"] == "POST") {
-        $titulo = $_POST["titulo"];
-
-        $sql = $conexion -> prepare("SELECT * FROM videojuegos WHERE titulo = ?");
+        /* $titulo = "%" . $_POST["titulo"] . "%"; */ 
+        $titulo = $_POST["titulo"]; /* % significa todo lo que se le parezca antes y despues*/ 
+        /* $sql = $conexion -> prepare("SELECT * FROM videojuegos WHERE titulo LIKE ?"); */
+       $columna = $_POST["columna"];
+       $orden = $_POST["orden"];
+       
+        $sql = $conexion -> prepare("SELECT * FROM videojuegos 
+            WHERE titulo LIKE CONCAT('%',?,'%')   /*LIKE sirve para buscar si una cadena de caracteres coincide con un patron*/  
+            ORDER BY $columna $orden");
         $sql -> bind_param("s", $titulo);
         $sql -> execute();
         $resultado = $sql -> get_result();
