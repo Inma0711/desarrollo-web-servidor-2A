@@ -12,14 +12,14 @@
     if($_SERVER["REQUEST_METHOD"] == "GET") {
         $titulo = $_GET["titulo"];
 
-        $sql = $conexion -> prepare("SELECT * FROM videojuegos
+        $sql = $_conexion -> prepare("SELECT * FROM videojuegos
             WHERE titulo = ?");
         $sql -> bind_param("s", $titulo);
         $sql -> execute();
         $resultado = $sql -> get_result();
 
         $fila = $resultado -> fetch_assoc();
-        $conexion -> close();
+        $_conexion -> close();
 
         $distribuidora = $fila["distribuidora"];
         $precio = $fila["precio"];
@@ -27,15 +27,14 @@
 
     if($_SERVER["REQUEST_METHOD"] == "POST") {
         $titulo = $_POST["titulo"];
-      //  $distribuidora = $_POST["distribuidora"];
+        $distribuidora = $_POST["distribuidora"];
         $precio = $_POST["precio"];
-        $distribuidoras = $_POST["distribuidoras"];
         $titulo_original = $_POST["titulo_original"];
-/* Update es para modificar lo que ya exista de la base de datos, es obligatorio poner un where a los update y a los delete*/ 
-        $sql = $conexion -> prepare("UPDATE videojuegos 
+
+        $sql = $_conexion -> prepare("UPDATE videojuegos 
             SET titulo = ?, distribuidora = ?, precio = ?
             WHERE titulo = ?");
-        $sql -> bind_param("ssds", $titulo, $distribuidoras, $precio, $titulo_original);
+        $sql -> bind_param("ssds", $titulo, $distribuidora, $precio, $titulo_original);
         $sql -> execute();
         header('location: index.php');
     }
@@ -50,30 +49,17 @@
                 <label class="form-label">Título</label>
                 <input class="form-control" type="text" name="titulo" value="<?php echo $titulo ?>">
             </div>
-            <!--
             <div class="mb-3">
                 <label class="form-label">Distribuidora</label>
                 <input class="form-control" type="text" name="distribuidora" value="<?php echo $distribuidora ?>">
-            </div>
-            
-            -->
-            <div>
-                <label class="form-label">Distribuidoras</label>
-            <select class="form-select" name="distribuidoras">
-                        <option selected value="distribuidora1">distribuidora1</option>
-                        <option value="distribuidora2">distribuidora2</option>
-                        <option value="distruidora3">distribuidora3</option>
-                    </select>
             </div>
             <div class="mb-3">
                 <label class="form-label">Precio</label>
                 <input class="form-control" type="number" step="0.1" name="precio" value="<?php echo $precio ?>">
             </div>
-
             <div class="mb-3">
                 <input class="btn btn-primary" type="submit" value="Editar">
             </div>
-           
         </form>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>

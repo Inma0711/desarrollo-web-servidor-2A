@@ -13,40 +13,36 @@
         $titulo = $_POST["titulo"];
         $columna = $_POST["columna"];
         $orden = $_POST["orden"];
-        
+
+        $filtro = explode(";", $_POST["filtro"]);
+        // El explode crea un array separando un string segun el delimitador, es como un split
+
+       //var_dump($filtro);   Esto es como el console log
+        /*
         $precioMin = (double)$_POST['preciomin'];
         if (strlen($_POST['preciomax']) > 0)
             $precioMax = (double)$_POST['preciomax'];
         else
             $precioMax = PHP_INT_MAX;
+       */
         // $rango1 = (double)$_POST['rango1'];
        // $rango2 = (double)$_POST['rango2'];
 
 
+        $sqlito = "SELECT * FROM videojuegos WHERE titulo LIKE CONCAT('%',?,'%')
+        AND precio >= ? AND precio < ?";
 
+        //"AND ((precio <= p1 AND precio < p2) OR (precio <= p3 AND precio < p4))";
+
+        $sqlito .= " ORDER BY $columna $orden";
 /*LIKE es como, se usa para hacer comparaciones de strings segun expresiones regulares*/ 
         $sql = $conexion -> prepare(
-            "SELECT * FROM videojuegos 
-
-            WHERE
-            titulo LIKE CONCAT('%',?,'%')
-            AND
-            precio >= ?
-            AND
-            precio <= ?
-            /*
-            AND 
-            precio >= ?
-            AND
-            precio <= ?
-            */
-            
-
-            ORDER BY $columna $orden"
+            $sqlito
             );
-        $sql -> bind_param("sdd", $titulo, $precioMin, $precioMax); /*Siempre que haya interrogacion va a haber un bind, si es string es la s*/
+      /*  $sql -> bind_param("sddsss", $titulo, $precioMin, $precioMax); Siempre que haya interrogacion va a haber un bind, si es string es la s*/
       //  $sql -> bind_param("sdddd", $titulo, $precioMin, $precioMax, $rango1, $rango2);
-        $sql -> execute(); /*Para ejecutar*/ 
+      $sql -> bind_param("sdd", $titulo, $filtro[0], $filtro[1]);
+      $sql -> execute(); /*Para ejecutar*/ 
         $resultado = $sql -> get_result();  /*Para sacar resultado*/ 
         $conexion -> close(); /* Cerrar conexion*/ 
     }
@@ -92,6 +88,20 @@
             <div class="row mb-3">
                 <div class="col-2"><label><input type="text" value="" name="preciomin">Precio Min</label></div>
                 <div class="col-2"><label><input type="text" value="" name="preciomax">Precio Max</label></div>
+            </div>
+            <div class="row">
+                <div>
+                    <input id="r1" type="radio" value="0;20" name="filtro">
+                    <label for="r1">0 - 20</label>
+                </div>
+                <div>
+                    <input type="radio" value="20;50" name="filtro">
+                    <label>20 - 50</label>
+                </div>
+                <div>
+                    <input type="radio" value="50;100" name="filtro">
+                    <label>50 - 100</label>
+                </div>
             </div>
               
             <div class="row mb-3">
