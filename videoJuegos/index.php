@@ -14,12 +14,18 @@
         $columna = $_POST["columna"];
         $orden = $_POST["orden"];
 
-        $filtro = explode(";", $_POST["filtro"]);
+        $filtro = $_POST["filtro"];
+       print_r($_POST);
+     var_dump($_POST);
+
+      $filtro = explode(";", $_POST["filtro"]);
+
         // El explode crea un array separando un string segun el delimitador, es como un split
 
        //var_dump($filtro);   Esto es como el console log
         /*
         $precioMin = (double)$_POST['preciomin'];
+
         if (strlen($_POST['preciomax']) > 0)
             $precioMax = (double)$_POST['preciomax'];
         else
@@ -32,11 +38,12 @@
         $sqlito = "SELECT * FROM videojuegos WHERE titulo LIKE CONCAT('%',?,'%')
         AND precio >= ? AND precio < ?";
 
+        $sqlito .= " ORDER BY $columna $orden";
         //"AND ((precio <= p1 AND precio < p2) OR (precio <= p3 AND precio < p4))";
 
-        $sqlito .= " ORDER BY $columna $orden";
+      
 /*LIKE es como, se usa para hacer comparaciones de strings segun expresiones regulares*/ 
-        $sql = $conexion -> prepare(
+        $sql = $conexion -> prepare(    /* Conexion a la base de datos*/ 
             $sqlito
             );
       /*  $sql -> bind_param("sddsss", $titulo, $precioMin, $precioMax); Siempre que haya interrogacion va a haber un bind, si es string es la s*/
@@ -91,7 +98,7 @@
             </div>
             <div class="row">
                 <div>
-                    <input id="r1" type="radio" value="0;20" name="filtro">
+                    <input id="r1" type="radio" value="0;20" name="filtro" checked>
                     <label for="r1">0 - 20</label>
                 </div>
                 <div>
